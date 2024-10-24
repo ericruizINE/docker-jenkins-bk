@@ -1,0 +1,17 @@
+version: '2'
+services:
+  master:
+    build: .
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkinsPruebasRoot
+    restart: unless-stopped
+    hostname: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - volumenJenkinsPruebas:/var/jenkins_home
+
+volumes:
+  volumenJenkinsPruebas:
+    external: true  # Asegúrate de que el volumen esté creado
